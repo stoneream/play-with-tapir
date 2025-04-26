@@ -25,6 +25,14 @@ lazy val endpoint = (project in file("endpoint"))
     libraryDependencies ++= Dependencies.endpoint
   )
 
+lazy val gendoc = (project in file("gendoc"))
+  .configure(baseSettings)
+  .settings(
+    name := "gendoc",
+    libraryDependencies ++= Dependencies.gendoc
+  )
+  .dependsOn(endpoint % "compile->compile; test->test")
+
 lazy val server = (project in file("server"))
   .configure(baseSettings)
   .enablePlugins(PlayScala)

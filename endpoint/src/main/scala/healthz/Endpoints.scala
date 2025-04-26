@@ -9,4 +9,6 @@ object Endpoints {
     .in("healthz")
     .out(plainBody[String])
     .description("Health check endpoint")
+
+  val endpoints = List(healthzEndpoint)
 }

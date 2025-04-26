@@ -1,0 +1,18 @@
+openapi: 3.1.0
+info:
+  title: health
+  version: '1.0'
+paths:
+  /healthz:
+    get:
+      tags:
+      - Health
+      description: Health check endpoint
+      operationId: getHealthz
+      responses:
+        '200':
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
