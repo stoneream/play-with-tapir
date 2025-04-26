@@ -10,17 +10,18 @@ import scala.concurrent.ExecutionContext
 
 @Singleton
 class Router @Inject() (
-    endpoints: Endpoints,
     controller: HealthController
 )(using
     ExecutionContext,
     Materializer
 ) extends SimpleRouter {
 
+  import healthz.Endpoints.*
+
   private val playServerOptions: PlayServerOptions = PlayServerOptions.default()
   private val interpreter = PlayServerInterpreter(playServerOptions)
 
   override def routes: Routes = interpreter.toRoutes(
-    endpoints.healthzEndpoint.serverLogic(_ => controller.healthz())
+    healthzEndpoint.serverLogic(_ => controller.healthz())
   )
 }

@@ -18,6 +18,13 @@ lazy val root = (project in file("."))
   .configure(baseSettings)
   .aggregate(server, logging)
 
+lazy val endpoint = (project in file("endpoint"))
+  .configure(baseSettings)
+  .settings(
+    name := "endpoint",
+    libraryDependencies ++= Dependencies.endpoint
+  )
+
 lazy val server = (project in file("server"))
   .configure(baseSettings)
   .enablePlugins(PlayScala)
@@ -32,6 +39,7 @@ lazy val server = (project in file("server"))
     )
   )
   .dependsOn(logging % "compile->compile; test->test")
+  .dependsOn(endpoint % "compile->compile; test->test")
 
 lazy val logging = (project in file("logging"))
   .configure(baseSettings)

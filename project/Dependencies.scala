@@ -10,6 +10,10 @@ object Dependencies {
     tapir
   ).flatten
 
+  lazy val endpoint: Seq[ModuleID] = Seq(
+    tapir
+  ).flatten
+
   val tapirVersion = "1.11.25"
   lazy val tapir: Seq[ModuleID] = Seq(
     "com.softwaremill.sttp.tapir" %% "tapir-core" % tapirVersion,
