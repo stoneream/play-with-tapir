@@ -16,7 +16,7 @@ lazy val baseSettings: Project => Project =
 
 lazy val root = (project in file("."))
   .configure(baseSettings)
-  .aggregate(server, logging)
+  .aggregate(server, logging, endpoint, gendoc)
 
 lazy val endpoint = (project in file("endpoint"))
   .configure(baseSettings)
